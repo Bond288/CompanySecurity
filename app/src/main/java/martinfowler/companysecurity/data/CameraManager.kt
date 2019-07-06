@@ -6,19 +6,21 @@ import android.content.Context
 
 class CameraManager(context: Context) {
     private var devicePolicyManager: DevicePolicyManager = context.getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
-    private val componentName = ComponentName(context, CompanyDeviceAdminReceiver::class.java)
+    private val adminDeviceReceiver = ComponentName(context, CompanyDeviceAdminReceiver::class.java)
 
     fun cameraOff(){
-        devicePolicyManager.setCameraDisabled(componentName, true)
+        devicePolicyManager.setCameraDisabled(adminDeviceReceiver, true)
     }
 
     fun cameraOn(){
-        devicePolicyManager.setCameraDisabled(componentName, true)
+        devicePolicyManager.setCameraDisabled(adminDeviceReceiver, false)
     }
 
-    fun isAdminActive() = devicePolicyManager.isAdminActive(componentName)
+    fun isAdminActive() = devicePolicyManager.isAdminActive(adminDeviceReceiver)
 
-    fun getDisabled() = devicePolicyManager.getCameraDisabled(componentName)
+    fun getDisabled() = devicePolicyManager.getCameraDisabled(adminDeviceReceiver)
 
-
+    fun getAdminComponent(): ComponentName {
+        return adminDeviceReceiver
+    }
 }
