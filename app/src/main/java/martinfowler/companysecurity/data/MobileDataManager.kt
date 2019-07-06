@@ -1,32 +1,51 @@
 package martinfowler.companysecurity.data
 
-import android.annotation.TargetApi
 import android.content.Context
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.telephony.TelephonyManager
-
+import java.lang.reflect.InvocationTargetException
 
 
 class MobileDataManager(context: Context) {
 
     private var telephonyService: TelephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
 
-    @TargetApi(Build.VERSION_CODES.O)
+
+    @RequiresApi(Build.VERSION_CODES.O)
     fun mobileDataOn() {
-        val method = telephonyService.javaClass.getMethod("setDataEnabled", Boolean.javaClass)
-        method.invoke(telephonyService, true)
+        setMobileDataEnabled(true)
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     fun mobileDataOff() {
-        val method = telephonyService.javaClass.getMethod("setDataEnabled", Boolean.javaClass)
-        method.invoke(telephonyService, false)
+        setMobileDataEnabled(false)
     }
 
-    @TargetApi(Build.VERSION_CODES.O)
-    fun isMobileDataEnabled(): Boolean {
-        val method = telephonyService.javaClass.getMethod("getDataEnabled")
-        return method.invoke(telephonyService) as Boolean
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun isMobileDataEnabled() =
+        try {
+            val method = telephonyService.javaClass.getMethod("getDataEnabled")
+            method.invoke(telephonyService) as Boolean
+        } catch (illegalAccess: IllegalAccessException) {
+            false
+        } catch (illegalArgument: IllegalArgumentException) {
+            false
+        } catch (illegalInvocationTarget: InvocationTargetException) {
+            false
+        }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun setMobileDataEnabled(enabled: Boolean) {
+        try {
+            val method = telephonyService.javaClass.getMethod("setDataEnabled", Boolean::class.java)
+            method.invoke(telephonyService, enabled)
+        } catch (illegalAccess: IllegalAccessException) {
+
+        } catch (illegalArgument: IllegalArgumentException) {
+
+        } catch (illegalInvocationTarget: InvocationTargetException) {
+
+        }
     }
 }

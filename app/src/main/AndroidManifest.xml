@@ -1,7 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools" package="martinfowler.companysecurity"
-          coreApp="true"
-          android:sharedUserId="android.uid.system">
+          coreApp="true">
 
     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" tools:ignore="ProtectedPermissions"/>
 

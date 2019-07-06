@@ -1,5 +1,6 @@
 package martinfowler.companysecurity.presentation
 
+import android.annotation.TargetApi
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun buttonText(){
+    private fun buttonText(){
         if (cameraManger.getDisabled()) {
             button.text = getString(R.string.unblock)
         } else {
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun toggleMobileData() {
+    private fun toggleMobileData() {
         if (mobileDataManager.isMobileDataEnabled()) {
             mobileDataManager.mobileDataOff()
         } else {
