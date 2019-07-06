@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CompanySecurity</string>
+    <string name="admin_receiver_label">Разрешить доступ администратора</string>
+    <string name="admin_receiver_description">Описание доступа администратора, запретит доступ к камере</string>
+    <string name="block">Заблокировать</string>
+    <string name="unblock">Разблокировать</string>
 </resources>
