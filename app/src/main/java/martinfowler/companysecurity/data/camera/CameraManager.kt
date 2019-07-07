@@ -1,4 +1,4 @@
-package martinfowler.companysecurity.data
+package martinfowler.companysecurity.data.camera
 
 import android.app.admin.DevicePolicyManager
 import android.content.ComponentName

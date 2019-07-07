@@ -1,16 +1,15 @@
 package martinfowler.companysecurity.presentation
 
-import android.annotation.TargetApi
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
-import martinfowler.companysecurity.data.CameraManager
+import martinfowler.companysecurity.data.camera.CameraManager
 import android.app.admin.DevicePolicyManager
 import android.content.Intent
 import android.os.Build
 import android.support.annotation.RequiresApi
 import martinfowler.companysecurity.R
-import martinfowler.companysecurity.data.MobileDataManager
+import martinfowler.companysecurity.data.connection.MobileDataManager
 
 
 class MainActivity : AppCompatActivity() {

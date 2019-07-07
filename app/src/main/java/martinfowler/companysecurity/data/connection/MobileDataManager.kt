@@ -1,4 +1,4 @@
-package martinfowler.companysecurity.data
+package martinfowler.companysecurity.data.connection
 
 import android.content.Context
 import android.os.Build

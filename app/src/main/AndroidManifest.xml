@@ -1,7 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          xmlns:tools="http://schemas.android.com/tools" package="martinfowler.companysecurity"
-          coreApp="true">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="martinfowler.companysecurity"
+          coreApp="true"
+          android:sharedUserId="android.uid.system">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" tools:ignore="ProtectedPermissions"/>
 
     <application android:allowBackup="true"
@@ -19,14 +23,14 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".data.CompanyDeviceAdminReceiver"
+        <receiver android:name=".data.camera.CompanyDeviceAdminReceiver"
                   android:label="@string/admin_receiver_label"
                   android:description="@string/admin_receiver_description"
                   android:permission="android.permission.BIND_DEVICE_ADMIN">
             <meta-data android:name="android.app.device_admin"
-                       android:resource="@xml/device_admin" />
+                       android:resource="@xml/device_admin"/>
             <intent-filter>
-                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED"/>
             </intent-filter>
         </receiver>
 
