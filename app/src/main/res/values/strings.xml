@@ -4,4 +4,5 @@
     <string name="admin_receiver_description">Описание доступа администратора, запретит доступ к камере</string>
     <string name="block">Заблокировать</string>
     <string name="unblock">Разблокировать</string>
+    <string name="passwordOk">OK</string>
 </resources>

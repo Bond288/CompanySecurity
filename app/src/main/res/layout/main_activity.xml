@@ -4,8 +4,8 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent">
 
-    <ImageButton
-            android:id="@+id/button"
+    <ImageView
+            android:id="@+id/icon"
             android:layout_height="120dp"
             android:layout_width="120dp"
             android:layout_gravity="center"
@@ -13,5 +13,31 @@
             android:background="@android:color/transparent"
             android:src="@drawable/icon_selector"
             android:contentDescription="TODO"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_gravity="center"/>
+
+    <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="180dp"
+            android:inputType="textPassword"
+            android:ems="4"
+            android:visibility="invisible"/>
+
+    <Button
+            android:id="@+id/passwordOk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="240dp"
+            android:text="@string/passwordOk"
+            android:visibility="invisible"/>
 
 </FrameLayout>
