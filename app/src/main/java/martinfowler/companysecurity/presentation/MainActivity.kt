@@ -8,12 +8,13 @@ import android.app.admin.DevicePolicyManager
 import android.content.Intent
 import android.os.Build
 import android.support.annotation.RequiresApi
+import android.widget.ImageButton
 import martinfowler.companysecurity.R
 import martinfowler.companysecurity.data.connection.MobileDataManager
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var button: Button
+    private lateinit var button: ImageButton
     private lateinit var cameraManger: CameraManager
     private lateinit var mobileDataManager: MobileDataManager
 
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         cameraManger = CameraManager(this)
         mobileDataManager = MobileDataManager(this)
         button = findViewById(R.id.button)
-        buttonText()
+        buttonImage()
         button.setOnClickListener{
             if (cameraManger.isAdminActive()) {
                 toggleMobileData()
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 } else {
                     cameraManger.cameraOn()
                 }
-                buttonText()
+                buttonImage()
             } else {
                 val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN)
                 intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, cameraManger.getAdminComponent())
@@ -43,12 +44,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun buttonText(){
-        if (cameraManger.getDisabled()) {
-            button.text = getString(R.string.unblock)
-        } else {
-            button.text = getString(R.string.block)
-        }
+    fun buttonImage(){
+        button.isSelected = cameraManger.getDisabled()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
